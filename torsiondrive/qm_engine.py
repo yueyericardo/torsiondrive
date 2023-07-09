@@ -103,7 +103,7 @@ class QMEngine(object):
         if output_files is None:
             output_files = []
         if self.work_queue is None:
-            subprocess.run(cmd, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            subprocess.run(cmd, shell=True, check=True)
         else:
             self.work_queue.submit(cmd, input_files, output_files)
 
