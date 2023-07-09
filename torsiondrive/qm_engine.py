@@ -179,8 +179,8 @@ class EngineOpenMM(QMEngine):
         # step 2
         self.write_input()
         # set3
-        self.run('geometric-optimize --prefix tdrive --qccnv --reset --epsilon 0.0 --enforce 0.1 --qdata --pdb '
-                 'input.pdb --openmm input.xml constraints.txt',
+        self.run('geometric-optimize --prefix tdrive --qccnv=yes --reset=True --epsilon 0.0 --enforce 0.1 --qdata=yes --pdb '
+                 'input.pdb --engine=openmm input.xml constraints.txt',
                  input_files=['input.xml', 'input.pdb', 'constraints.txt'],
                  output_files=['tdrive.log', 'tdrive.xyz', 'qdata.txt'])
 
@@ -299,7 +299,7 @@ class EnginePsi4(QMEngine):
         # step 2
         self.write_input('input.dat')
         # step 3
-        cmd = 'geometric-optimize --prefix tdrive --qccnv --reset --epsilon 0.0 --enforce 0.1 --qdata --psi4 input.dat constraints.txt'
+        cmd = 'geometric-optimize --prefix tdrive --qccnv=yes --reset=True --epsilon 0.0 --enforce 0.1 --qdata=yes --engine=psi4 input.dat constraints.txt'
         self.run(cmd, input_files=['input.dat', 'constraints.txt'], output_files=['tdrive.log', 'tdrive.xyz', 'qdata.txt'])
 
     def load_native_output(self, filename='output.dat'):
